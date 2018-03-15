@@ -8,5 +8,9 @@ module ToyRobot
     getter facing : String
 
     def initialize(@x = 0, @y = 0, @facing = "NORTH"); end
+
+    def report
+      puts "#{x},#{y},#{facing}"
+    end
   end
 end
