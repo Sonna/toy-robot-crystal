@@ -42,5 +42,12 @@ module ToyRobot
       @x -= MOVE[@facing][:x] if x < 0 || x > 4
       @y -= MOVE[@facing][:y] if y < 0 || y > 4
     end
+
+    def place(coordinates : String)
+      x, y, facing = coordinates.split(",")
+      @x = x.to_i
+      @y = y.to_i
+      @facing = facing.to_s
+    end
   end
 end

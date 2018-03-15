@@ -255,4 +255,24 @@ describe ToyRobot do
       subject.facing.should eq "SOUTH"
     end
   end
+
+  describe "#place" do
+    it "can place the Robot at 4,2,WEST" do
+      subject = ToyRobot::Robot.new
+      subject.place("4,2,WEST")
+
+      subject.x.should eq 4
+      subject.y.should eq 2
+      subject.facing.should eq "WEST"
+    end
+
+    it "can place the Robot at 2,3,SOUTH" do
+      subject = ToyRobot::Robot.new
+      subject.place("2,3,SOUTH")
+
+      subject.x.should eq 2
+      subject.y.should eq 3
+      subject.facing.should eq "SOUTH"
+    end
+  end
 end
