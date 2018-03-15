@@ -69,4 +69,80 @@ describe ToyRobot do
       output.should eq "2,3,WEST"
     end
   end
+
+  describe "#left" do
+    it "can turn from facing=NORTH to facing=WEST" do
+      subject = ToyRobot::Robot.new
+      subject.left
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "WEST"
+    end
+
+    it "can turn from facing=WEST to facing=SOUTH" do
+      subject = ToyRobot::Robot.new(0, 0, "WEST")
+      subject.left
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "SOUTH"
+    end
+
+    it "can turn from facing=SOUTH to facing=EAST" do
+      subject = ToyRobot::Robot.new(0, 0, "SOUTH")
+      subject.left
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "EAST"
+    end
+
+    it "can turn from facing=EAST to facing=NORTH" do
+      subject = ToyRobot::Robot.new(0, 0, "EAST")
+      subject.left
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "NORTH"
+    end
+  end
+
+  describe "#right" do
+    it "can turn from facing=NORTH to facing=EAST" do
+      subject = ToyRobot::Robot.new
+      subject.right
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "EAST"
+    end
+
+    it "can turn from facing=EAST to facing=SOUTH" do
+      subject = ToyRobot::Robot.new(0, 0, "EAST")
+      subject.right
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "SOUTH"
+    end
+
+    it "can turn from facing=SOUTH to facing=WEST" do
+      subject = ToyRobot::Robot.new(0, 0, "SOUTH")
+      subject.right
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "WEST"
+    end
+
+    it "can turn from facing=WEST to facing=NORTH" do
+      subject = ToyRobot::Robot.new(0, 0, "WEST")
+      subject.right
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "NORTH"
+    end
+  end
 end
