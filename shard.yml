@@ -1,0 +1,9 @@
+name: toy-robot-crystal
+version: 0.1.0
+
+authors:
+  - Alex Sonneveld <Alex.Sonneveld@live.com.au>
+
+crystal: 0.24.2
+
+license: MIT
