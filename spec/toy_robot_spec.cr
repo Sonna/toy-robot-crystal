@@ -145,4 +145,114 @@ describe ToyRobot do
       subject.facing.should eq "NORTH"
     end
   end
+
+  describe "#move" do
+    it "can move from default position" do
+      subject = ToyRobot::Robot.new
+      subject.move
+
+      subject.x.should eq 0
+      subject.y.should eq 1
+      subject.facing.should eq "NORTH"
+    end
+
+    it "can move SOUTH" do
+      subject = ToyRobot::Robot.new(2, 2, "SOUTH")
+      subject.move
+
+      subject.x.should eq 2
+      subject.y.should eq 1
+      subject.facing.should eq "SOUTH"
+    end
+
+    it "can move WEST" do
+      subject = ToyRobot::Robot.new(3, 3, "WEST")
+      subject.move
+
+      subject.x.should eq 2
+      subject.y.should eq 3
+      subject.facing.should eq "WEST"
+    end
+
+    it "can move from 0,0,EAST" do
+      subject = ToyRobot::Robot.new(0, 0, "EAST")
+      subject.move
+
+      subject.x.should eq 1
+      subject.y.should eq 0
+      subject.facing.should eq "EAST"
+    end
+
+    it "does not move off the table from 0,0,SOUTH" do
+      subject = ToyRobot::Robot.new(0, 0, "SOUTH")
+      subject.move
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "SOUTH"
+    end
+
+    it "does not move off the table from 0,0,WEST" do
+      subject = ToyRobot::Robot.new(0, 0, "WEST")
+      subject.move
+
+      subject.x.should eq 0
+      subject.y.should eq 0
+      subject.facing.should eq "WEST"
+    end
+
+    it "does not move off the table from 0,4,WEST" do
+      subject = ToyRobot::Robot.new(0, 4, "WEST")
+      subject.move
+
+      subject.x.should eq 0
+      subject.y.should eq 4
+      subject.facing.should eq "WEST"
+    end
+
+    it "does not move off the table from 0,4,NORTH" do
+      subject = ToyRobot::Robot.new(0, 4, "NORTH")
+      subject.move
+
+      subject.x.should eq 0
+      subject.y.should eq 4
+      subject.facing.should eq "NORTH"
+    end
+
+    it "does not move off the table from 4,4,NORTH" do
+      subject = ToyRobot::Robot.new(4, 4, "NORTH")
+      subject.move
+
+      subject.x.should eq 4
+      subject.y.should eq 4
+      subject.facing.should eq "NORTH"
+    end
+
+    it "does not move off the table from 4,4,EAST" do
+      subject = ToyRobot::Robot.new(4, 4, "EAST")
+      subject.move
+
+      subject.x.should eq 4
+      subject.y.should eq 4
+      subject.facing.should eq "EAST"
+    end
+
+    it "does not move off the table from 4,0,EAST" do
+      subject = ToyRobot::Robot.new(4, 0, "EAST")
+      subject.move
+
+      subject.x.should eq 4
+      subject.y.should eq 0
+      subject.facing.should eq "EAST"
+    end
+
+    it "does not move off the table from 4,0,SOUTH" do
+      subject = ToyRobot::Robot.new(4, 0, "SOUTH")
+      subject.move
+
+      subject.x.should eq 4
+      subject.y.should eq 0
+      subject.facing.should eq "SOUTH"
+    end
+  end
 end

@@ -10,6 +10,13 @@ module ToyRobot
       "WEST"  => {"LEFT" => "SOUTH", "RIGHT" => "NORTH"},
     }
 
+    MOVE = {
+      "NORTH" => {x: 0, y: 1},
+      "SOUTH" => {x: 0, y: -1},
+      "EAST"  => {x: 1, y: 0},
+      "WEST"  => {x: -1, y: 0},
+    }
+
     getter x : Int32
     getter y : Int32
     getter facing : String
@@ -26,6 +33,14 @@ module ToyRobot
 
     def right
       @facing = TURN[facing]["RIGHT"]
+    end
+
+    def move
+      @x += MOVE[@facing][:x]
+      @y += MOVE[@facing][:y]
+
+      @x -= MOVE[@facing][:x] if x < 0 || x > 4
+      @y -= MOVE[@facing][:y] if y < 0 || y > 4
     end
   end
 end
