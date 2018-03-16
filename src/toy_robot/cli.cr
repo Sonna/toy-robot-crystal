@@ -1,5 +1,11 @@
 module ToyRobot
+  # The Command Line Interface entrypoint to the application
   module CLI
+    # The CLI method entrypoint to be called within `main.cr` with CLI arguments
+    #
+    # ```
+    # ToyRobot::CLI.run(ARGV)
+    # ```
     def self.run(args : Array(String))
       robot = Robot.new
 
