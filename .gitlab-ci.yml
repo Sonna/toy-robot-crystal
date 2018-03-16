@@ -16,7 +16,9 @@ before_script:
 # If you are using built-in Crystal Spec.
 spec:
   script:
-  - crystal spec
+  # - bin/build
+  # - crystal spec
+  - bin/test
 
 # If you are using minitest.cr
 # minitest:
