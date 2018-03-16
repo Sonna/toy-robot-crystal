@@ -21,6 +21,13 @@ spec:
   - crystal tool format --check src/
   - bin/test
 
+doc:
+  script:
+  - crystal doc
+  artifacts:
+    paths:
+    - doc
+
 # If you are using minitest.cr
 # minitest:
 #   script:
