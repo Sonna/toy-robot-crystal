@@ -18,6 +18,7 @@ spec:
   script:
   # - bin/build
   # - crystal spec
+  - crystal tool format --check src/
   - bin/test
 
 # If you are using minitest.cr
