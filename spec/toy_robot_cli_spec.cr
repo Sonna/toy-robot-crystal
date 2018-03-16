@@ -6,35 +6,14 @@ describe ToyRobot::CLI do
   describe "Process#run" do
     # WARNING this test requires that it is built first, before working
     it "can run Robot CLI with STDIN" do
-      # subject = "spec/fixtures/example_a.txt"
-      # subject = ToyRobot::CLI
-
-      # Process.run(command : String, args = nil, env : Env = nil, clear_env : Bool = false,
-      #             shell : Bool = false,
-      #             input : Stdio = Redirect::Close,
-      #             output : Stdio = Redirect::Close,
-      #             error : Stdio = Redirect::Close,
-      #             chdir : String? = nil) : Process::Status
       input = IO::Memory.new("REPORT\nEXIT\n")
       output = IO::Memory.new
 
       Process.run("bin/main", input: input, output: output)
-      # Process.run("bash", args: {"bin/main"}, input: input, output: output)
-      # Process.run("bash", args: {"-c", "echo $(read)"}, input: input, output: output)
 
       input.close
       output.close
-      # output, _err, in = Stdio.capture do |io|
-      #   STDOUT.puts ->{ subject.run([] of String) }
-      #   # STDOUT.puts ""
-      #   STDERR.puts ""
-      #   # io.in.puts "REPORT"
-      #   io.in.puts "EXIT"
 
-      #   [io.out.gets, io.err.gets, STDIN.gets]
-      # end
-
-      # in.should eq "REPORT\nEXIT\n"
       output.to_s.should eq "0,0,NORTH\n"
     end
 
@@ -207,6 +186,17 @@ describe ToyRobot::CLI do
       end
 
       output.should eq "0,1,NORTH"
+    end
+
+    it "can run Robot CLI with a file called example_b.txt full output" do
+      args = {"spec/fixtures/example_b.txt"}
+      output = IO::Memory.new
+
+      Process.run("bin/main", args: args, output: output)
+
+      output.close
+
+      output.to_s.should eq "0,1,NORTH\n2,1,EAST\n"
     end
 
     it "can run Robot CLI with a file called example_c.txt" do
