@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: crystallang/crystal:latest
+    steps:
+    - checkout
+    - run: apt-get update -qq && apt-get install -y -qq libxml2-dev
+    - run: crystal -v # Print out Crystal version for debugging
+    - run: shards
+
+  test:
+    docker:
+    - image: crystallang/crystal:latest
+    steps:
+    - checkout
+    - run: crystal tool format --check src/
+    - run: bin/test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - build
+    - test
+
